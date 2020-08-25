@@ -18,15 +18,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Artboard 1" translatesAutoresizingMaskIntoConstraints="NO" id="mAY-yu-nGd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eY3-3c-eZR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="cc5-ln-9J6"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WlX-QR-u3J">
-                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="dPd-kh-uH5">
@@ -47,20 +40,25 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="WlX-QR-u3J" secondAttribute="bottom" id="30P-k9-elw"/>
-                            <constraint firstItem="eY3-3c-eZR" firstAttribute="trailing" secondItem="LSX-NQ-KqO" secondAttribute="trailing" id="733-mt-umz"/>
                             <constraint firstAttribute="bottom" secondItem="mAY-yu-nGd" secondAttribute="bottom" id="AYB-GZ-ykC"/>
                             <constraint firstItem="WlX-QR-u3J" firstAttribute="trailing" secondItem="LSX-NQ-KqO" secondAttribute="trailing" id="Fl3-4g-vR7"/>
-                            <constraint firstItem="WlX-QR-u3J" firstAttribute="top" secondItem="eY3-3c-eZR" secondAttribute="bottom" id="KN2-gr-qgp"/>
+                            <constraint firstItem="WlX-QR-u3J" firstAttribute="top" secondItem="LSX-NQ-KqO" secondAttribute="top" id="K65-0v-XEN"/>
+                            <constraint firstAttribute="bottom" secondItem="WlX-QR-u3J" secondAttribute="bottom" id="SZa-MH-eKO"/>
                             <constraint firstItem="mAY-yu-nGd" firstAttribute="trailing" secondItem="LSX-NQ-KqO" secondAttribute="trailing" id="Ubu-fq-bnn"/>
                             <constraint firstItem="mAY-yu-nGd" firstAttribute="leading" secondItem="LSX-NQ-KqO" secondAttribute="leading" id="XN6-3F-AAU"/>
                             <constraint firstItem="WlX-QR-u3J" firstAttribute="leading" secondItem="LSX-NQ-KqO" secondAttribute="leading" id="XRm-2M-t7n"/>
-                            <constraint firstItem="eY3-3c-eZR" firstAttribute="top" secondItem="LSX-NQ-KqO" secondAttribute="top" id="Zir-Og-kNh"/>
-                            <constraint firstItem="eY3-3c-eZR" firstAttribute="leading" secondItem="LSX-NQ-KqO" secondAttribute="leading" id="hQS-o5-Fpk"/>
+                            <constraint firstItem="WlX-QR-u3J" firstAttribute="trailing" secondItem="LSX-NQ-KqO" secondAttribute="trailing" id="YdN-Ds-vtD"/>
                             <constraint firstItem="mAY-yu-nGd" firstAttribute="top" secondItem="EfB-PW-1SS" secondAttribute="top" id="qdM-Vf-ebn"/>
+                            <constraint firstItem="WlX-QR-u3J" firstAttribute="leading" secondItem="LSX-NQ-KqO" secondAttribute="leading" id="tjB-qw-L3x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LSX-NQ-KqO"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="c5c-fp-6MK">
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="K3H-VN-i35">
+                            <connections>
+                                <action selector="searchScreen:" destination="BwB-eJ-zLV" id="FUK-ya-fWM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="heart.circle.fill" catalog="system" id="Cfe-sY-HaX">
                             <connections>
                                 <action selector="changeToFavScreen:" destination="BwB-eJ-zLV" id="l7O-Cd-M0o"/>

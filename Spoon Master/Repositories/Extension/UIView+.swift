@@ -11,6 +11,6 @@ import UIKit
 
 extension UIView {
     func makeRoundCorner() {
-        layer.cornerRadius = frame.height / 10
+        layer.cornerRadius = frame.height / 5
     }
 }

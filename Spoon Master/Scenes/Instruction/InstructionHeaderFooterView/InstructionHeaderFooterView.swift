@@ -18,8 +18,5 @@ final class InstructionHeaderFooterView: UITableViewHeaderFooterView {
             $0.text?.capitalizingFirstLetter()
             $0.wrapContent()
         }
-        if data.isEmpty {
-            sectionNameLabel.text = "Prepare"
-        }
     }
 }

@@ -29,7 +29,9 @@ final class InstructionViewController: UIViewController {
             $0.register(UINib(nibName: Constant.Identifier.instructionTableViewCell, bundle: nil),
                         forCellReuseIdentifier: Constant.Identifier.instructionTableViewCell)
             $0.register(UINib(nibName: Constant.Identifier.instructionHeaderFooterView, bundle: nil), forHeaderFooterViewReuseIdentifier: Constant.Identifier.instructionHeaderFooterView)
-        }
+            $0.rowHeight = UITableView.automaticDimension
+            $0.estimatedRowHeight = Constant.Height.estimateHeightInstruction
+            }
     }
     
     func takeInstructionData( _ analyzedInstructions: [AnalyzedInstruction]) {
@@ -57,13 +59,24 @@ final class InstructionViewController: UIViewController {
 
 // MARK: - UITableView Delegate
 extension InstructionViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constant.Height.heightForInstructionRow
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let step = analyzedInstructionData[indexPath.section].steps[indexPath.row]
+        if step.ingredients.isEmpty == false || step.equiments.isEmpty == false {
+            let storyboard = UIStoryboard(name: "StepView", bundle: nil)
+            guard let stepVC = storyboard.instantiateViewController(withIdentifier: "StepViewController") as? StepViewController else { return }
+            stepVC.getStepData(step)
+            navigationController?.pushViewController(stepVC, animated: true)
+        } else {
+            return
+        }
     }
 }
 
 // MARK: - UITableView DataSource
 extension InstructionViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return analyzedInstructionData[section].steps.count
    }
@@ -81,6 +94,14 @@ extension InstructionViewController: UITableViewDataSource {
     // MARK: - Custom Section
     func numberOfSections(in tableView: UITableView) -> Int {
         return analyzedInstructionData.count
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch analyzedInstructionData[section].name {
+        case "":
+            return 0
+        default:
+            return 44
+        }
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

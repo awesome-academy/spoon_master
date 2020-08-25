@@ -30,10 +30,23 @@ final class DetailViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet private weak var summaryTextView: UITextView!
     @IBOutlet private weak var nameFoodLabel: UILabel!
     @IBOutlet private weak var moneyLabel: UILabel!
+    @IBOutlet private weak var slideOfPersonLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var scoreLabel: UILabel!
     @IBOutlet private weak var goToIngredientButton: UIButton!
     @IBOutlet private weak var goToInstructionButton: UIButton!
+    @IBOutlet private weak var vegetarianLabel: UILabel!
+    @IBOutlet private weak var veganLabel: UILabel!
+    @IBOutlet private weak var glutenLabel: UILabel!
+    @IBOutlet private weak var dairyLabel: UILabel!
+    @IBOutlet private weak var healthyLabel: UILabel!
+    @IBOutlet private weak var cheapLabel: UILabel!
+    @IBOutlet private weak var popularLabel: UILabel!
+    @IBOutlet private weak var sustainableLabel: UILabel!
+    @IBOutlet private weak var smartPointLabel: UILabel!
+    @IBOutlet private weak var gapsLabel: UILabel!
+    @IBOutlet private weak var lowFodmapLabel: UILabel!
+    @IBOutlet private weak var likesLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +62,27 @@ final class DetailViewController: UIViewController, UICollectionViewDelegate {
         nameFoodLabel.text = data.title
         avatarFoodImage.kf.setImage(with: url)
         summaryTextView.text = data.summary.htmlToString
-        moneyLabel.text = "$: \(data.pricePerServing)"
-        timeLabel.text = "Time: \(data.readyInMinutes)"
+        moneyLabel.text = "\(data.pricePerServing)$"
+        timeLabel.text = "\(data.readyInMinutes)m"
+        slideOfPersonLabel.text = "\(data.servings)"
         scoreLabel.text = "\(data.spoonacularScore)"
-        
+        vegetarianLabel.text = "\(data.vegetarian)"
+        veganLabel.text = "\(data.vegan)"
+        glutenLabel.text = "\(data.glutenFree)"
+        dairyLabel.text = "\(data.dairyFree)"
+        healthyLabel.text = "\(data.veryHealthy)"
+        cheapLabel.text = " \(data.cheap)"
+        popularLabel.text = "\(data.veryPopular)"
+        sustainableLabel.text = "\(data.sustainable)"
+        smartPointLabel.text = "\(data.weightWatcherSmartPoints)"
+        gapsLabel.text = "\(data.gaps)"
+        lowFodmapLabel.text = "\(data.lowFodmap)"
+        likesLabel.text = "\(data.aggregateLikes)"
     }
     
     func configCell() {
         summaryTextView.isEditable = false
+        moneyLabel.wrapContent()
         nameFoodLabel.wrapContent()
         avatarFoodImage.makeRoundCorner()
         goToIngredientButton.makeRoundCorner()
@@ -105,6 +131,7 @@ final class DetailViewController: UIViewController, UICollectionViewDelegate {
     }
     
     @IBAction private func addToFavorite(_ sender: UIBarButtonItem) {
+        loadContext(data?.title ?? "")
         guard let check = checked, let recipe = data else { return }
         if check {
             saveContext(recipe)
@@ -134,7 +161,7 @@ final class DetailViewController: UIViewController, UICollectionViewDelegate {
             $0.image = recipe.image
             $0.recipeId = Int64(recipe.randomId)
         }
-      
+        
         do {
             try context?.save()
         } catch {
@@ -147,12 +174,13 @@ final class DetailViewController: UIViewController, UICollectionViewDelegate {
         let predicate = NSPredicate(format: "name == %@", title)
         request.predicate = predicate
         request.fetchLimit = 1
+        
         do {
             guard let items = try context?.fetch(request) as? [NSManagedObject] else { return }
             if items.isEmpty == false {
                 context?.delete(items[0])
-                
             }
+            
             try context?.save()
         } catch {
             print("error")

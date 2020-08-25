@@ -19,10 +19,11 @@ enum Constant {
     
     enum Height {
         static let heightOfHeaderInSection: CGFloat = 45
-        static let heightForRow: CGFloat = 205
+        static let heightForRow: CGFloat = 215
         static let heightForIngredientRow: CGFloat = 130
-        static let heightForInstructionRow: CGFloat = 450
+        static let heightForInstructionRow: CGFloat = 320
         static let heightForFavoriteRow: CGFloat = 90
+        static let estimateHeightInstruction: CGFloat = 240
     }
     
     enum Identifier {
@@ -41,6 +42,8 @@ enum Constant {
         static let equipmentCollectionViewCell = "EquipmentCollectionViewCell"
         static let favoriteViewController = "FavoriteViewController"
         static let favoriteTableViewCell = "FavoriteTableViewCell"
+        static let searchViewController = "SearchViewController"
+        static let searchResultTableViewCell = "SearchResultTableViewCell"
     }
     
     enum Storyboard {
@@ -49,6 +52,7 @@ enum Constant {
         static let ingredient = "Ingredient"
         static let instruction = "Instruction"
         static let favorite = "Favorite"
+        static let searchResult = "SearchResult"
     }
     
     enum Serial {

@@ -1,8 +1,8 @@
 //
-//  ProductDetail.swift
+//  SearchProductDetail.swift
 //  Spoon Master
 //
-//  Created by Nam Ngây on 7/1/20.
+//  Created by Nam Ngây on 7/12/20.
 //  Copyright © 2020 Nam Ngây. All rights reserved.
 //
 

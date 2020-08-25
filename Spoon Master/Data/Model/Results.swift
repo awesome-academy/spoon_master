@@ -12,8 +12,7 @@ import ObjectMapper
 struct Results: Mappable {
     var recipesId = 0
     var readyInMinute = 0
-    var serving = 0
-    var sourceUrl = ""
+    var title = ""
     var image = ""
     
     init?(map: Map) {
@@ -23,8 +22,7 @@ struct Results: Mappable {
     mutating func mapping(map: Map) {
         recipesId <- map["id"]
         readyInMinute <- map["readyInMinutes"]
-        serving <- map["servings"]
-        sourceUrl <- map["sourceUrl"]
+        title <- map["title"]
         image <- map["image"]
     }
 }

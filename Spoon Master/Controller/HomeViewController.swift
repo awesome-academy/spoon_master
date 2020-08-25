@@ -82,9 +82,18 @@ final class HomeViewController: UIViewController {
     @IBAction func changeToFavScreen(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: Constant.Storyboard.favorite, bundle: nil)
         if let favoriteVC = storyboard.instantiateViewController(
-        withIdentifier: Constant.Identifier.favoriteViewController) as?
+            withIdentifier: Constant.Identifier.favoriteViewController) as?
             FavoriteViewController {
             navigationController?.pushViewController(favoriteVC, animated: true)
+        }
+    }
+    
+    @IBAction func searchScreen(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: Constant.Storyboard.searchResult, bundle: nil)
+        if let resultVC = storyboard.instantiateViewController(
+            withIdentifier: Constant.Identifier.searchViewController) as?
+            SearchViewController {
+            navigationController?.pushViewController(resultVC, animated: true)
         }
     }
 }

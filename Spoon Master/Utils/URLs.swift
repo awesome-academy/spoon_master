@@ -24,4 +24,6 @@ struct URLs {
     static let productDetail = baseUrl + "/food/products/%d"
     
     static let recipeInfo = baseUrl + "/recipes/%d/information"
+    
+    static let searchRecipe = baseUrl + "/recipes/complexSearch"
 }
